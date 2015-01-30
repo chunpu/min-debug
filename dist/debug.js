@@ -78,12 +78,7 @@ exports.init = function(key) {
 		enable(res[1])
 		var doc = document
 		var elem = doc.createElement('textarea')
-		elem.setAttribute('style', 'width:100%;height:300px;overflow:auto;line-height:1.4;background:#333;color:#fff')
-		/*
-		var style = elem.style
-		style.width = '100%'
-		style.height = '300px'
-		style.overflow = 'auto'*/
+		elem.style.cssText = 'width:100%;height:300px;overflow:auto;line-height:1.4;background:#333;color:#fff'
 		var box = doc.body || doc.documentElement
 		box.insertBefore(elem, box.firstChild)
 
