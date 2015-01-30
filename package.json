@@ -1,0 +1,38 @@
+{
+  "name": "min-debug",
+  "version": "1.1.0",
+  "description": "debug for browser in console or display on page",
+  "main": "debug.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "browserify test/*.js | poor -b chrome",
+    "readme": "pretty-readme > readme.md",
+    "build": "browserify browser.js -s debug > dist/debug.js"
+  },
+  "author": "chunpu",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^8.1.1",
+    "mocha": "^2.1.0",
+    "poor": "^1.1.3"
+  },
+  "dependencies": {
+    "browserify": "^8.1.1",
+    "poor": "^1.1.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chunpu/min-debug.git"
+  },
+  "keywords": [
+    "debug",
+    "browser",
+    "IE"
+  ],
+  "bugs": {
+    "url": "https://github.com/chunpu/min-debug/issues"
+  },
+  "homepage": "https://github.com/chunpu/min-debug"
+}

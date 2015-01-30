@@ -1,0 +1,8 @@
+language: node_js
+branches:
+  only:
+    - gh-pages
+env:
+  global:
+    - SAUCE_USERNAME: ftft1885
+    - secure: "V/9ZbaLE5CNrXSN945IBzjQSK5pVcACtki32YDwZtY9KgK74exP5Joqh8gWz1P+px9VeRrbcWMQE8N7EVuqbdJIjiY7JFexlr5tuLWgzSDYzzsuMTWGQRO8LmWz+A9gjn8zew4FCzQ+k3jMKA2Hm8L1Lfaq0D2woEPEF6B2rBOs="
