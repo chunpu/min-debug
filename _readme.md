@@ -3,7 +3,7 @@ Introduction
 
 [Demo](http://chunpu.github.io/min-debug/?debug=*)
 
-min-debug is inspired by [tj@debug](https://github.com/visionmedia/debug)
+`min-debug` is inspired by [tj@debug](https://github.com/visionmedia/debug)
 
 Support IE6+
 
@@ -22,22 +22,23 @@ Start
 
 Debug with localStorage
 
-Type `localStorage[mykey] = '*'`, and debug just like tj@debug
+Type `localStorage[mykey] = '*'`, and debug just like tj's debug
 
 
 Debug with page
 
 If browser not support localStorage or you want to see debug on page, use url debug
 
-Type `mykey='*'` in `location.search` or `location.hash`, and will see debug info in a textarea on page
+Type `mykey='*'` in url href either `location.search` or `location.hash`, and will see debug info in a textarea on page
 
-> the key pattern is regexp match, just like tj's debug, e.g. `localStorage.debug = 'api*, call, -*verbose*'`
+> the key pattern is regexp match, just like tj's debug
+> e.g. `localStorage.debug = 'api*, call, -*verbose*'`
 
 
 Usage
 ---
 
-run `min-debug` directly with [dist/debug.js](https://github.com/chunpu/min-debug/blob/gh-pages/dist/debug.js), support
+run `min-debug` directly with [dist/debug.js](http://chunpu.github.io/min-debug/dist/debug.js), support
 
 - window.debug
 - define
@@ -51,7 +52,7 @@ module.exports = exports = require('min-debug')
 exports.init('mykey') // default is debug
 ```
 
-`min-debug` does not support print format, because we may need log on some old browser like IE6
+`min-debug` does not support *print format*, because we may need log on some old browser like IE6
 
 ```js
 debug('my data', {foo: 'bar'}) // min-debug style
