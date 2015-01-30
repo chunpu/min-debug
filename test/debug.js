@@ -20,6 +20,6 @@ describe('basic', function() {
 		// console.log(val)
 		assert(val.indexOf('show') != -1, 'open can show')
 		assert(val.indexOf('close cant show') == -1, 'close cant show')
-		assert(val.split('\n').length >= 3, 'show multi lines')
+		assert(val.split('\n').length >= 2, 'show multi lines')
 	})
 })

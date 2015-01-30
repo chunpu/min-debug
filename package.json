@@ -1,7 +1,7 @@
 {
   "name": "min-debug",
-  "version": "1.2.0",
-  "description": "debug for browser in console or display on page",
+  "version": "1.2.1",
+  "description": "Debug for browser in console or display on page",
   "main": "debug.js",
   "directories": {
     "test": "test"
