@@ -21,13 +21,13 @@ Introduction
 
 `min-debug` is inspired by [tj@debug](https://github.com/visionmedia/debug)
 
-Support **IE6+**
-
-![IE6](https://cloud.githubusercontent.com/assets/4565306/5986698/2ccc14d8-a93f-11e4-9126-2be906af0951.png)
-
 Easy for **Phone** debug log
 
 ![iPhone](https://cloud.githubusercontent.com/assets/4565306/5986780/3be01de8-a944-11e4-8f1d-67e39c8b56c6.png)
+
+Support **IE6+**
+
+![IE6](https://cloud.githubusercontent.com/assets/4565306/5986698/2ccc14d8-a93f-11e4-9126-2be906af0951.png)
 
 Also work with log in **Console**
 
