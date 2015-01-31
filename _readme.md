@@ -11,7 +11,7 @@ Support **IE6+**
 
 Easy for **Phone** debug log
 
-![iPhone](https://cloud.githubusercontent.com/assets/4565306/5986713/60262480-a940-11e4-963f-b8f911ec6011.png)
+![iPhone](https://cloud.githubusercontent.com/assets/4565306/5986742/9b7479c2-a942-11e4-96fb-de79a7aad0e7.png)
 
 Also work with log in **Console**
 
@@ -62,4 +62,12 @@ exports.init('mykey') // default is debug
 ```js
 debug('my data', {foo: 'bar'}) // min-debug style
 debug('my data: %o', {foo: 'bar'}) // tj's debug style, not support
+```
+
+Small Size
+---
+
+```sh
+cat debug.js | uglifyjs -mc | gzip | wc -m
+# ==> 483b
 ```

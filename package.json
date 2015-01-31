@@ -1,7 +1,7 @@
 {
   "name": "min-debug",
   "version": "1.2.3",
-  "description": "Debug for browser in console or display on page",
+  "description": "Debug module for browsers which can Display on page or in Console, for Phone and old IE debugging",
   "main": "debug.js",
   "directories": {
     "test": "test"
