@@ -21,15 +21,15 @@ Introduction
 
 `min-debug` is inspired by [tj@debug](https://github.com/visionmedia/debug)
 
-Support IE6+
+Support **IE6+**
 
-![IE6](https://cloud.githubusercontent.com/assets/4565306/5972401/d32f21c8-a893-11e4-813b-852973ae82e0.png)
+![IE6](https://cloud.githubusercontent.com/assets/4565306/5986698/2ccc14d8-a93f-11e4-9126-2be906af0951.png)
 
 Easy for **Phone** debug log
 
-![iPhone](https://cloud.githubusercontent.com/assets/4565306/5972402/de802978-a893-11e4-8f92-5902d99ae697.png)
+![iPhone](https://cloud.githubusercontent.com/assets/4565306/5986713/60262480-a940-11e4-963f-b8f911ec6011.png)
 
-Also With log in Console
+Also work with log in **Console**
 
 ![Console](https://cloud.githubusercontent.com/assets/4565306/5972375/6ad4bc50-a893-11e4-812e-948bbae5f96d.png)
 
@@ -38,14 +38,17 @@ Start
 
 Debug with localStorage
 
-Type `localStorage[mykey] = '*'`, and debug just like tj's debug
+Type `localStorage.debug = '*'`, then the debug logs just show like tj's debug
+
+> if your website is maintained by different teams, you can customize your key rather than 'debug' when initing min-debug module
+> so teams won't disturb each other
 
 
 Debug with page
 
-If browser not support localStorage or you want to see debug on page, use url debug
+If browser not support localStorage or you want to see debug log on page, use url debug
 
-Type `mykey='*'` in url href either `location.search` or `location.hash`, and will see debug info in a textarea on page
+Type `debug='*'` in url href either `location.search` or `location.hash`, and will see debug info in a textarea on page
 
 > the key pattern is regexp match, just like tj's debug
 > e.g. `localStorage.debug = 'api*, call, -*verbose*'`
@@ -61,14 +64,16 @@ run `min-debug` directly with [dist/debug.js](http://chunpu.github.io/min-debug/
 - module.exports
 
 
-If your program using browserify, you should init the debug key self
+If your website using browserify, you should init the debug mnodule self
+
+`debug.js`
 
 ```js
 module.exports = exports = require('min-debug')
 exports.init('mykey') // default is debug
 ```
 
-`min-debug` does not support *print format*, because we may need log on some old browser like IE6
+`min-debug` does not support *print format*, because we may need to show logs on some old browsers like IE6
 
 ```js
 debug('my data', {foo: 'bar'}) // min-debug style
