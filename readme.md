@@ -27,7 +27,7 @@ Support **IE6+**
 
 Easy for **Phone** debug log
 
-![iPhone](https://cloud.githubusercontent.com/assets/4565306/5986742/9b7479c2-a942-11e4-96fb-de79a7aad0e7.png)
+![iPhone](https://cloud.githubusercontent.com/assets/4565306/5986780/3be01de8-a944-11e4-8f1d-67e39c8b56c6.png)
 
 Also work with log in **Console**
 
