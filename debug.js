@@ -72,10 +72,9 @@ exports.init = function(key) {
 		enable(res[1])
 		var doc = document
 		var elem = doc.createElement('textarea')
-		elem.style.cssText = 'width:100%;height:300px;overflow:auto;line-height:1.4;background:#333;color:#fff'
+		elem.style.cssText = 'width:100%;height:300px;overflow:auto;line-height:1.4;background:#333;color:#fff;font:16px Consolas;border:none'
 		var box = doc.body || doc.documentElement
 		box.insertBefore(elem, box.firstChild)
-
 		exports.log = function(namespace, arr, color) {
 			var ret = ['[' + namespace + ']']
 			var len = arr.length
@@ -89,6 +88,7 @@ exports.init = function(key) {
 				ret.push(val)
 			}
 			elem.value += ret.join(' ') + '\n'
+			elem.scrollTop = elem.scrollHeight
 		}
 
 	} else if (global.localStorage && console) {

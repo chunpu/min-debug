@@ -6,6 +6,7 @@
 	<style>
 	* {
 		margin: 0;
+		padding: 0;
 	}
 	h1 {
 		margin-top: 30px;
@@ -22,13 +23,18 @@
 	var b = debug('worker:b')
 	a('init')
 	b('init')
-	setInterval(function(){
+	var timer1 = setInterval(function(){
 		a('log some number', 1024)
 	}, 1000)
 
-	setInterval(function(){
+	var timer2 = setInterval(function(){
 		b('log some object', {foo: 'bar'})
 	}, 1200)
+
+	setTimeout(function() {
+		clearInterval(timer1)
+		clearInterval(timer2)
+	}, 15 * 1000)
 	</script>
 </body>
 </html>

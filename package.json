@@ -1,6 +1,6 @@
 {
   "name": "min-debug",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Debug for browser in console or display on page",
   "main": "debug.js",
   "directories": {
