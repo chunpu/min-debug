@@ -15,7 +15,7 @@ Support **IE6+**
 
 Also work with log in **Console**
 
-![Console](https://cloud.githubusercontent.com/assets/4565306/5972375/6ad4bc50-a893-11e4-812e-948bbae5f96d.png)
+![Console](https://cloud.githubusercontent.com/assets/4565306/5986930/53dcd1ae-a94c-11e4-857c-99010a4a7201.png)
 
 Start
 ---

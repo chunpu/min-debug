@@ -12,6 +12,8 @@ exports.skips = []
 var colors = 'lightseagreen forestgreen goldenrod dodgerblue darkorchid crimson'.split(' ')
 var colorIndex = 0
 
+exports.prefix = ''
+
 function noop() {}
 
 function enable(namespaces) {
@@ -50,7 +52,7 @@ exports.log = function(namespace, args, color) {
 	var ms = curr - (prev || curr)
 	prev = curr
 
-	var label = 'ad:ares:' + namespace
+	var label = exports.prefix + namespace
 	var main = '%c' + label + '%c'
 	var arr = [null, color, inherit]
 	for (var i = 0; i < args.length; i++) {
