@@ -8,29 +8,11 @@ var console = global.console
 var doc = global.document
 var names = []
 var skips = []
+var debugElement
 
 init()
 
 exports.prefix = ''
-
-exports.log = function(namespace, args, color) {
-	var curr = +new Date
-	var ms = curr - (prev || curr)
-	prev = curr
-
-	var label = exports.prefix + namespace
-	var main = '%c' + label + '%c'
-	var arr = [null, color, inherit]
-	for (var i = 0; i < args.length; i++) {
-		arr.push(args[i])
-		main += ' %o'
-	}
-	arr.push(color)
-	main += '%c +' + ms + 'ms'
-	arr[0] = main
-	console.debug.apply(console, arr)
-}
-
 exports.init = init
 
 function Debug(namespace) {
@@ -46,27 +28,9 @@ function init(key) {
 	var res = reg.exec(location.href)
 	if (res) {
 		enable(res[1])
-		var elem = doc.createElement('textarea')
-		elem.style.cssText = 'width:100%;height:300px;overflow:auto;line-height:1.4;background:#333;color:#fff;font:16px Consolas;border:none'
-		var box = doc.body || doc.documentElement
-		box.insertBefore(elem, box.firstChild)
-		exports.log = function(namespace, arr, color) {
-			var ret = ['[' + namespace + ']']
-			var len = arr.length
-			for (var i = 0; i < len; i++) {
-				var val = arr[i]
-				try {
-					val = JSON.stringify(val, 0, 4)
-				} catch (e) {
-					val += ''
-				}
-				ret.push(val)
-			}
-			elem.value += ret.join(' ') + '\n'
-			elem.scrollTop = elem.scrollHeight
-		}
-
+		exports.log = elementLog
 	} else if (global.localStorage && console) {
+		exports.log = consoleLog
 		try {
 			enable(localStorage[key])
 		} catch (ignore) {}
@@ -102,4 +66,49 @@ function enabled(name) {
 
 function getColor() {
 	return colors[colorIndex++ % colors.length]
+}
+
+function elementLog(namespace, args, color) {
+	debugElement = debugElement || initDebugElement()
+	var items = ['[' + namespace + ']']
+	var len = args.length
+
+	for (var i = 0; i < len; i++) {
+		var val = args[i]
+		try {
+			val = JSON.stringify(val, 0, 4)
+		} catch (e) {
+			val += ''
+		}
+		items.push(val)
+	}
+
+	debugElement.value += items.join(' ') + '\n'
+	debugElement.scrollTop = debugElement.scrollHeight
+}
+
+function initDebugElement() {
+	var elem = doc.createElement('textarea')
+	elem.style.cssText = 'z-index:999;width:100%;height:300px;overflow:auto;line-height:1.4;background:#333;color:#fff;font:16px Consolas;border:none;'
+	var box = doc.body || doc.documentElement
+	box.insertBefore(elem, box.firstChild)
+	return elem
+}
+
+function consoleLog(namespace, args, color) {
+	var curr = +new Date
+	var ms = curr - (prev || curr)
+	prev = curr
+
+	var label = exports.prefix + namespace
+	var main = '%c' + label + '%c'
+	var arr = [null, color, inherit]
+	for (var i = 0; i < args.length; i++) {
+		arr.push(args[i])
+		main += ' %o'
+	}
+	arr.push(color)
+	main += '%c +' + ms + 'ms'
+	arr[0] = main
+	console.debug.apply(console, arr)
 }
