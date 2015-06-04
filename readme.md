@@ -4,6 +4,14 @@ min-debug
 [![Build status][travis-image]][travis-url]
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][downloads-url]
+[![Dependency Status][david-image]][david-url]
+[npm-image]: https://img.shields.io/npm/v/min-debug.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/min-debug
+[downloads-image]: http://img.shields.io/npm/dm/min-debug.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/min-debug
+[david-image]: http://img.shields.io/david/chunpu/min-debug.svg?style=flat-square
+[david-url]: https://david-dm.org/chunpu/min-debug
+
 
 Debug module for browsers which can Display on page or in Console, for Phone and old IE debugging
 
@@ -11,7 +19,7 @@ Installation
 ---
 
 ```sh
-npm install min-debug
+npm i min-debug
 ```
 
 Introduction
@@ -50,7 +58,7 @@ If browser not support localStorage or you want to see debug log on page, use ur
 
 Type `debug='*'` in url href either `location.search` or `location.hash`, and will see debug info in a textarea on page
 
-> the key pattern is regexp match, just like tj's debug
+> support wildcast match, just like tj's debug
 > e.g. `localStorage.debug = 'api*, call, -*verbose*'`
 
 
@@ -63,14 +71,12 @@ run `min-debug` directly with [dist/debug.js](http://chunpu.github.io/min-debug/
 - define
 - module.exports
 
-
-If your website using browserify, you should init the debug mnodule self
-
-`debug.js`
+CommonJS Usage
 
 ```js
-module.exports = exports = require('min-debug')
-exports.init('mykey') // default is debug
+var debug = require('debug')('main')
+
+debug('hello')
 ```
 
 `min-debug` does not support *print format*, because we may need to show logs on some old browsers like IE6
@@ -78,6 +84,25 @@ exports.init('mykey') // default is debug
 ```js
 debug('my data', {foo: 'bar'}) // min-debug style
 debug('my data: %o', {foo: 'bar'}) // tj's debug style, not support
+```
+
+Advanced
+---
+
+Init with another key
+
+```js
+var Debug = require('debug')
+Debug.init('mydebug') // then use localStorage.mydebug = '*'
+```
+
+Overwrite log function
+
+```js
+var Debug = require('debug')
+Debug.log = function(name, args, color) {
+	// ...
+}
 ```
 
 Small Size
@@ -91,11 +116,9 @@ cat debug.js | uglifyjs -mc | gzip | wc -m
 License
 ---
 
-ISC
+[![License][license-image]][license-url]
 
-[npm-image]: https://img.shields.io/npm/v/min-debug.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/min-debug
 [travis-image]: https://img.shields.io/travis/chunpu/min-debug.svg?style=flat-square
 [travis-url]: https://travis-ci.org/chunpu/min-debug
-[downloads-image]: http://img.shields.io/npm/dm/min-debug.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/min-debug
+[license-image]: http://img.shields.io/npm/l/min-debug.svg?style=flat-square
+[license-url]: #

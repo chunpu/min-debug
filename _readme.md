@@ -34,7 +34,7 @@ If browser not support localStorage or you want to see debug log on page, use ur
 
 Type `debug='*'` in url href either `location.search` or `location.hash`, and will see debug info in a textarea on page
 
-> the key pattern is regexp match, just like tj's debug
+> support wildcast match, just like tj's debug
 > e.g. `localStorage.debug = 'api*, call, -*verbose*'`
 
 
@@ -47,14 +47,12 @@ run `min-debug` directly with [dist/debug.js](http://chunpu.github.io/min-debug/
 - define
 - module.exports
 
-
-If your website using browserify, you should init the debug mnodule self
-
-`debug.js`
+CommonJS Usage
 
 ```js
-module.exports = exports = require('min-debug')
-exports.init('mykey') // default is debug
+var debug = require('debug')('main')
+
+debug('hello')
 ```
 
 `min-debug` does not support *print format*, because we may need to show logs on some old browsers like IE6
@@ -62,6 +60,25 @@ exports.init('mykey') // default is debug
 ```js
 debug('my data', {foo: 'bar'}) // min-debug style
 debug('my data: %o', {foo: 'bar'}) // tj's debug style, not support
+```
+
+Advanced
+---
+
+Init with another key
+
+```js
+var Debug = require('debug')
+Debug.init('mydebug') // then use localStorage.mydebug = '*'
+```
+
+Overwrite log function
+
+```js
+var Debug = require('debug')
+Debug.log = function(name, args, color) {
+	// ...
+}
 ```
 
 Small Size
