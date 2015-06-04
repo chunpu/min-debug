@@ -69,7 +69,9 @@ function getColor() {
 }
 
 function elementLog(namespace, args, color) {
+	// init element when first log, cannot cancel after inited
 	debugElement = debugElement || initDebugElement()
+
 	var items = ['[' + namespace + ']']
 	var len = args.length
 
