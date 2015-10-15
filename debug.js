@@ -10,10 +10,10 @@ var names = []
 var skips = []
 var debugElement
 
-init()
-
 exports.prefix = ''
 exports.init = init
+exports.enable = enable
+var logs = exports.logs = {}
 
 function Debug(namespace) {
 	var color = 'color:' + getColor()
@@ -28,9 +28,9 @@ function init(key) {
 	var res = reg.exec(location.href)
 	if (res) {
 		enable(res[1])
-		exports.log = elementLog
+		exports.log = logs.html
 	} else if (global.localStorage && console) {
-		exports.log = consoleLog
+		exports.log = logs.console
 		try {
 			enable(localStorage[key])
 		} catch (ignore) {}
@@ -68,7 +68,25 @@ function getColor() {
 	return colors[colorIndex++ % colors.length]
 }
 
-function elementLog(namespace, args, color) {
+logs.console = function(namespace, args, color) {
+	var curr = +new Date
+	var ms = curr - (prev || curr)
+	prev = curr
+
+	var label = exports.prefix + namespace
+	var main = '%c' + label + '%c'
+	var arr = [null, color, inherit]
+	for (var i = 0; i < args.length; i++) {
+		arr.push(args[i])
+		main += ' %o'
+	}
+	arr.push(color)
+	main += '%c +' + ms + 'ms'
+	arr[0] = main
+	console.debug.apply(console, arr)
+}
+
+logs.html = function(namespace, args, color) {
 	// init element when first log, cannot cancel after inited
 	debugElement = debugElement || initDebugElement()
 
@@ -97,20 +115,4 @@ function initDebugElement() {
 	return elem
 }
 
-function consoleLog(namespace, args, color) {
-	var curr = +new Date
-	var ms = curr - (prev || curr)
-	prev = curr
-
-	var label = exports.prefix + namespace
-	var main = '%c' + label + '%c'
-	var arr = [null, color, inherit]
-	for (var i = 0; i < args.length; i++) {
-		arr.push(args[i])
-		main += ' %o'
-	}
-	arr.push(color)
-	main += '%c +' + ms + 'ms'
-	arr[0] = main
-	console.debug.apply(console, arr)
-}
+init()
