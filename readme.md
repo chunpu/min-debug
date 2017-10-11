@@ -5,6 +5,7 @@ min-debug
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][downloads-url]
 [![Dependency Status][david-image]][david-url]
+
 [npm-image]: https://img.shields.io/npm/v/min-debug.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/min-debug
 [downloads-image]: http://img.shields.io/npm/dm/min-debug.svg?style=flat-square
